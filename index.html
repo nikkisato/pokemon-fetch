@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Pokemon Fetch</title>
+</head>
+<body>
+    <div id="loader" class="loader"></div>
+    <div>
+        <label for="pokemon">Choose your Pokemon</label>
+        <input type="text" id="pokemon" name="pokemon" value="" />
+        <button type="submit" id="pokemon-submit" onclick="getInputValue()">Battle</button>
+    </div>
+    <section id="section">
+        <div id="image"></div>
+        <h1 id="name"></h1>
+        <div>
+            <span>Abilities</span>
+            <ul id="abilities"></ul>
+        </div>
+        <div>
+        <span>Type:</span>
+            <span id="type"></span>
+        </div>
+        
+    </section>
+
+    <div id="error"></div>
+    
+    <script src="app.js"></script>
+    <script>
+        // https://dev.to/ironcladdev/a-little-dev-secret-how-to-make-a-loading-screen-1397
+document.documentElement.addEventListener("load", function(){
+    document.getElementById("loader").style.display = "block";
+});
+
+window.addEventListener("load", function(){
+    document.getElementById("loader").style.display = "none";
+});
+    </script>
+</body>
+</html>

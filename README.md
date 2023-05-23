@@ -17,6 +17,9 @@ Using this free REST api: https://pokeapi.co/
   - loading state (you can simulate this better by throttling to say 3G in your network dev tools tab)
   - error state (so error feedback) if the response errors
 - Ensure you check the returned Response object with the ok method. What is this method doing?
+
+## TODO
+
 - Add AbortController functionality and pass in a signal to the fetch request - in what scenarios might this be useful?
 - Add an automatic fetch retry mechanism - why might this be useful?
 - Read this article: https://learn.microsoft.com/en-us/azure/architecture/best-practices/api-design
