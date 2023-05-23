@@ -1,24 +1,17 @@
-// function getInputValue() {
-//   return (inputValue = document.getElementById("pokemon").value);
-// }
+// split it up in several functions
 
-async function getPokemon() {
+
+async function getPokemon(mm = "pikachu") {
   const image = document.getElementById("image");
   const name = document.getElementById("name");
   const abilities = document.getElementById("abilities");
   const type = document.getElementById("type");
   const error = document.getElementById("error");
+
   // const newPokemon = getInputValue();
   //GET https://pokeapi.co/api/v2/pokemon-color/{id or name}/
 
-  await fetch(`https://pokeapi.co/api/v2/pokemon/pikachu`, {
-    Method: "POST",
-    Headers: {
-      Accept: "application.json",
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-    },
-  })
+  await fetch(`https://pokeapi.co/api/v2/pokemon/${mm}`)
     .then(async (response) => {
       if (response.ok) {
         const result = await response.json();
@@ -29,6 +22,8 @@ async function getPokemon() {
     })
     .then((data) => {
       console.log(data);
+
+      // split this out
       image.innerHTML = `<img src=${data.sprites.front_default} />`;
       name.innerHTML = data.name;
 
@@ -49,3 +44,36 @@ async function getPokemon() {
 }
 
 getPokemon();
+
+const pokemonForm = document.getElementById("search-pokemon");
+pokemonForm.addEventListener("submit", updatePokemon);
+
+// function decleration?
+function updatePokemon(event) {
+  event.preventDefault();
+  // const data = new FormData(event.target);
+  const data = new FormData(this);
+  const pokemon = data.get("pokemon");
+  getPokemon(pokemon);
+
+  //this keyword
+}
+
+//function expression
+// const updatePokemon = (event) => {
+//   event.preventDefault();
+//   const data = new FormData(event.target);
+//   const pokemon = data.get("pokemon");
+//   getPokemon(pokemon);
+// };
+
+//this
+// pokemonForm.addEventListener("submit", (event) => {
+//   event.preventDefault();
+//   console.log("this1", this);
+// });
+
+// pokemonForm.addEventListener("submit", function (event) {
+//   event.preventDefault();
+//   console.log("this2", this);
+// });
